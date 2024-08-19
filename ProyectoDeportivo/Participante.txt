@@ -1,0 +1,2 @@
+Id de participante: 1 - Nombre: fabi - Equipo: sa - Edad: 12
+Id de participante: 1 - Nombre: fabi - Equipo: sa - Edad: 12
