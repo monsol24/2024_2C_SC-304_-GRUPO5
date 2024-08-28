@@ -19,6 +19,8 @@ public class ProyectoDeportivo {
         principal.setVisible(true);
         principal.setLocationRelativeTo(null);
         
+        
+        
     }
     
 }

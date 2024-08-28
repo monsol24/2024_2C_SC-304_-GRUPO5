@@ -1,4 +1,6 @@
 
- Lista: Nodo{dato=Id de participante: 4 - Nombre: Monica - Equipo: Heredia - edad: 20}
- Nodo{dato=Id de participante: 5 - Nombre: Maria - Equipo: Heredia - edad: 21}
+ Lista: 
+Id de participante: 1 - Nombre: Monica - Equipo: Heredia - edad: 18
+ 
+Id de participante: 2 - Nombre: David - Equipo: Alajuela - edad: 22
  

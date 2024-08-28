@@ -92,15 +92,13 @@ public class ListaParticipante {
         Nodoparticipante aux = cabeza;
         String s = " ";
         if (aux != null){
-            //s += aux + "\n ";
-            //s += aux.getDato().getNombre() + ",";
+            
             if(aux.getDato().getEquipo().equals(NombreEquipo)){
                 s += aux.getDato().getNombre() + ","; //Va haciendo la fila para los participantes
             }
             aux = aux.getSiguiente();
             while (aux != cabeza) {
-                //s += aux + "\n ";
-                //s += aux.getDato().getNombre() + ",";
+                
                 if(aux.getDato().getEquipo().equals(NombreEquipo)){
                     s += aux.getDato().getNombre() + ","; //Va haciendo la fila para los participantes
                 }

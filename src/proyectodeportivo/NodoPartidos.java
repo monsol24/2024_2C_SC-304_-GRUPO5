@@ -10,19 +10,33 @@ package proyectodeportivo;
  */
 public class NodoPartidos {
     
-    private String dato;
+    private int id;
+    private String Horario;
+    private String Equipo1;
+    private String Equipo2;
     private NodoPartidos atras;
 
-    public NodoPartidos(String dato) {
-        this.dato = dato;
+    public NodoPartidos(int id, String Horario, String Equipo1, String Equipo2) {
+        this.id = id;
+        this.Horario = Horario;
+        this.Equipo1 = Equipo1;
+        this.Equipo2 = Equipo2;
     }
 
-    public String getDato() {
-        return dato;
+    public int getId() {
+        return id;
     }
 
-    public void setDato(String dato) {
-        this.dato = dato;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getHorario() {
+        return Horario;
+    }
+
+    public void setHorario(String Horario) {
+        this.Horario = Horario;
     }
 
     public NodoPartidos getAtras() {
@@ -33,9 +47,26 @@ public class NodoPartidos {
         this.atras = atras;
     }
 
+    public String getEquipo1() {
+        return Equipo1;
+    }
+
+    public void setEquipo1(String Equipo1) {
+        this.Equipo1 = Equipo1;
+    }
+
+    public String getEquipo2() {
+        return Equipo2;
+    }
+
+    public void setEquipo2(String Equipo2) {
+        this.Equipo2 = Equipo2;
+    }
+
     @Override
     public String toString() {
-        return this.dato; // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        String PartidosCalendario = "Id Evento: "+this.id+" Equipo 1: "+Equipo1+" Equipo 2: "+Equipo2+" Horario: "+Horario+"\n";
+        return PartidosCalendario; // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
     
 }

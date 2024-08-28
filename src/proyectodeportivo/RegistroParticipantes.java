@@ -28,13 +28,150 @@ public class RegistroParticipantes extends javax.swing.JFrame {
         SpinnerNumberModel Spinner2 = new SpinnerNumberModel();
         Spinner2.setMinimum(0);
         Txt_ResulE2.setModel(Spinner2);
+        
+        EscondeBotones(); // Para que los botones no se muestren a no ser que ingrese como administrador
+        
     }
     
     //Se realizan las declaraciones
     ListaParticipante laLista = new ListaParticipante();
     ListaEvento laListaEvento = new ListaEvento();
     ColaPartidos colapartidos = new ColaPartidos();
+    PilaResultado nuevaPila = new PilaResultado();
+    RutinasResultado rutinasresultadosP = new RutinasResultado();
+    String ResultadoRelacion="";
+    String Prueba="";
     
+    public void EscondeBotones(){
+        
+        //Administrar Participantes
+        Btn_RegisParti.setVisible(false);
+        Txt_NombreParti.setVisible(false);
+        jLabel8.setVisible(false);
+        jLabel2.setVisible(false);
+        jLabel3.setVisible(false);
+        Txt_EdadParti.setVisible(false);
+        Btn_ModiParti.setVisible(false);
+        jLabel4.setVisible(false);
+        Txt_EquiParti.setVisible(false);
+        jLabel5.setVisible(false);
+        Txt_IdParti.setVisible(false);
+        Btn_EliParti.setVisible(false);
+        
+        //Administrar Eventos
+        jLabel6.setVisible(false);
+        jLabel12.setVisible(false);
+        Txt_IdEven.setVisible(false);
+        Btn_RegiEven.setVisible(false);
+        jLabel7.setVisible(false);
+        Txt_NombreEven.setVisible(false);
+        Txt_DiaEven.setVisible(false);
+        cmb_DiaEvento.setVisible(false);
+        cmb_MesEvento.setVisible(false);
+        Btn_ModiEven.setVisible(false);
+        jLabel9.setVisible(false);
+        Txt_UbiEven.setVisible(false);
+        Btn_EliEven.setVisible(false);
+        jLabel10.setVisible(false);
+        Txt_Equipo1Even.setVisible(false);
+        jLabel11.setVisible(false);
+        Txt_Equipo2Even.setVisible(false);
+
+        //Programar Partidos
+        jLabel13.setVisible(false);
+        jLabel15.setVisible(false);
+        Txt_IdEvenPro.setVisible(false);
+        jLabel14.setVisible(false);
+        cmb_HoraApertura.setVisible(false);
+        jLabel18.setVisible(false);
+        cmb_MAperturaS.setVisible(false);
+        cmb_MAperturaP.setVisible(false);
+        cmb_HorarioA.setVisible(false);
+        Btn_Programar.setVisible(false);
+        
+        //Resultados Partidos
+        jLabel16.setVisible(false);
+        jLabel17.setVisible(false);
+        Txt_IdEvenResul.setVisible(false);
+        jLabel19.setVisible(false);
+        Txt_ResulE1.setVisible(false);
+        jLabel20.setVisible(false);
+        Txt_ResulE2.setVisible(false);
+        Btn_Resultados.setVisible(false);
+        
+        //Titulo
+        jLabel1.setVisible(false);
+        
+        //Salir Modo Administrador
+        jButton7.setVisible(false);
+        
+        
+    }
+    
+    public void MostrarBotones(){
+        
+        //Administrar Participantes
+        Btn_RegisParti.setVisible(true);
+        Txt_NombreParti.setVisible(true);
+        jLabel8.setVisible(true);
+        jLabel2.setVisible(true);
+        jLabel3.setVisible(true);
+        Txt_EdadParti.setVisible(true);
+        Btn_ModiParti.setVisible(true);
+        jLabel4.setVisible(true);
+        Txt_EquiParti.setVisible(true);
+        jLabel5.setVisible(true);
+        Txt_IdParti.setVisible(true);
+        Btn_EliParti.setVisible(true);
+        
+        //Administrar Eventos
+        jLabel6.setVisible(true);
+        jLabel12.setVisible(true);
+        Txt_IdEven.setVisible(true);
+        Btn_RegiEven.setVisible(true);
+        jLabel7.setVisible(true);
+        Txt_NombreEven.setVisible(true);
+        Txt_DiaEven.setVisible(true);
+        cmb_DiaEvento.setVisible(true);
+        cmb_MesEvento.setVisible(true);
+        Btn_ModiEven.setVisible(true);
+        jLabel9.setVisible(true);
+        Txt_UbiEven.setVisible(true);
+        Btn_EliEven.setVisible(true);
+        jLabel10.setVisible(true);
+        Txt_Equipo1Even.setVisible(true);
+        jLabel11.setVisible(true);
+        Txt_Equipo2Even.setVisible(true);
+        
+        //Programar Partidos
+        jLabel13.setVisible(true);
+        jLabel15.setVisible(true);
+        Txt_IdEvenPro.setVisible(true);
+        jLabel14.setVisible(true);
+        cmb_HoraApertura.setVisible(true);
+        jLabel18.setVisible(true);
+        cmb_MAperturaS.setVisible(true);
+        cmb_MAperturaP.setVisible(true);
+        cmb_HorarioA.setVisible(true);
+        Btn_Programar.setVisible(true);
+        
+        //Resultados Partidos
+        jLabel16.setVisible(true);
+        jLabel17.setVisible(true);
+        Txt_IdEvenResul.setVisible(true);
+        jLabel19.setVisible(true);
+        Txt_ResulE1.setVisible(true);
+        jLabel20.setVisible(true);
+        Txt_ResulE2.setVisible(true);
+        Btn_Resultados.setVisible(true);
+        
+        //Titulo
+        jLabel1.setVisible(true);
+        
+        //Salir Modo Administrador
+        jButton7.setVisible(true);
+        
+    }
     
     
     /**
@@ -60,7 +197,6 @@ public class RegistroParticipantes extends javax.swing.JFrame {
         Btn_RegisParti = new javax.swing.JButton();
         Btn_ModiParti = new javax.swing.JToggleButton();
         Btn_EliParti = new javax.swing.JToggleButton();
-        jButton2 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         Txt_NombreEven = new javax.swing.JTextField();
@@ -96,12 +232,20 @@ public class RegistroParticipantes extends javax.swing.JFrame {
         Txt_IdEvenResul = new javax.swing.JTextField();
         Txt_ResulE1 = new javax.swing.JSpinner();
         Txt_ResulE2 = new javax.swing.JSpinner();
-        jButton3 = new javax.swing.JButton();
+        Btn_Resultados = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         cmb_HorarioA = new javax.swing.JComboBox<>();
+        jButton3 = new javax.swing.JButton();
+        jToggleButton1 = new javax.swing.JToggleButton();
+        jButton7 = new javax.swing.JButton();
+        jToggleButton2 = new javax.swing.JToggleButton();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Listas");
@@ -159,14 +303,6 @@ public class RegistroParticipantes extends javax.swing.JFrame {
         Btn_EliParti.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_EliPartiActionPerformed(evt);
-            }
-        });
-
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton2.setText("Atras");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
             }
         });
 
@@ -251,7 +387,7 @@ public class RegistroParticipantes extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel15.setText("Id Evento:");
 
-        cmb_HoraApertura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24" }));
+        cmb_HoraApertura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
 
         jLabel18.setText(":");
 
@@ -290,11 +426,11 @@ public class RegistroParticipantes extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton3.setText("Resultados");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        Btn_Resultados.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Btn_Resultados.setText("Resultados");
+        Btn_Resultados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                Btn_ResultadosActionPerformed(evt);
             }
         });
 
@@ -315,6 +451,40 @@ public class RegistroParticipantes extends javax.swing.JFrame {
         });
 
         cmb_HorarioA.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AM", "PM" }));
+
+        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton3.setText("Relacion equipos");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jToggleButton1.setText("Victorias");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton7.setText("Salir modo Administrador");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton2.setText("Administrador");
+        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton2ActionPerformed(evt);
+            }
+        });
+
+        jLabel21.setText("Ingrese a Administrador para poder administrar el sistema");
+
+        jLabel22.setText("Contraseña: Admin");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -392,46 +562,6 @@ public class RegistroParticipantes extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(189, 189, 189))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(Txt_Equipo2Even, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(189, 189, 189)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(Txt_ResulE2, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(Txt_IdEvenResul, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(Txt_ResulE1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(46, 46, 46)
-                                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(46, 46, 46)
-                                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(Txt_Equipo1Even, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -457,7 +587,60 @@ public class RegistroParticipantes extends javax.swing.JFrame {
                                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(Txt_NombreEven, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(152, 152, 152))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Txt_ResulE2, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(Txt_IdEvenResul, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Txt_ResulE1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(46, 46, 46)
+                                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(46, 46, 46)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                                        .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)
+                        .addComponent(jButton7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Btn_Resultados, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(189, 189, 189))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Txt_Equipo2Even, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Txt_Equipo1Even, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -480,7 +663,12 @@ public class RegistroParticipantes extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Txt_EquiParti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)))
+                            .addComponent(jLabel4))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Txt_IdParti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)
+                            .addComponent(Btn_EliParti)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton1)
@@ -489,12 +677,11 @@ public class RegistroParticipantes extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Btn_ModiParti)
                             .addComponent(jButton6)
-                            .addComponent(jButton4))))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Txt_IdParti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(Btn_EliParti))
+                            .addComponent(jButton4))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton3)
+                            .addComponent(jToggleButton1))))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
@@ -548,25 +735,35 @@ public class RegistroParticipantes extends javax.swing.JFrame {
                                 .addGap(115, 115, 115)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel17)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel11)
-                                .addComponent(Txt_Equipo2Even, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(Txt_IdEvenResul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel19)
-                            .addComponent(Txt_ResulE1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel17)
+                                    .addComponent(Txt_IdEvenResul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel19)
+                                    .addComponent(Txt_ResulE1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(Txt_Equipo2Even, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel11))
+                                .addGap(25, 25, 25)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel20)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel20)
+                                .addComponent(jLabel21))
                             .addComponent(Txt_ResulE2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
-                        .addGap(39, 39, 39))
+                        .addComponent(jLabel22)
+                        .addGap(23, 23, 23)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jToggleButton2)
+                            .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(40, 40, 40))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3)
+                        .addComponent(Btn_Resultados)
                         .addGap(31, 31, 31))))
         );
 
@@ -743,13 +940,6 @@ public class RegistroParticipantes extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_Btn_EliPartiActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        
-        dispose(); //Para cerrar la ventana
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void Txt_EdadPartiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Txt_EdadPartiActionPerformed
         // TODO add your handling code here:
@@ -934,6 +1124,7 @@ public class RegistroParticipantes extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null,"Resultados: "+ nuevaPila.imprimirPila());
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -946,7 +1137,6 @@ public class RegistroParticipantes extends javax.swing.JFrame {
     private void Btn_ProgramarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_ProgramarActionPerformed
         // TODO add your handling code here:
         //Si la informacion esta vacia
-        //Aun estaen desarrollo
         if(Txt_IdEvenPro.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Por favor llene la informacion");
         }else{
@@ -956,34 +1146,178 @@ public class RegistroParticipantes extends javax.swing.JFrame {
             String Minuto1 = cmb_MAperturaP.getSelectedItem().toString();
             String Minuto2 = cmb_MAperturaS.getSelectedItem().toString();
             String HorarioApertura = cmb_HorarioA.getSelectedItem().toString();
-            //Junta la informacion para pasarla a la cola de partidos
-            String ProPartidos = "Id Evento: "+IdEvento+" hora "+Hora+":"+Minuto1+Minuto2+" "+HorarioApertura;
+            int IdEventoComprueba = Integer.parseInt(Txt_IdEvenPro.getText());
+            boolean ExisteIdEvento=laListaEvento.existe(IdEventoComprueba); //Para que nos devuelva el resultado si existe el evento en evento
+            boolean ExisteEventoPorgramado = colapartidos.EventoProgramado(IdEventoComprueba); //Nos guarda el resultado si ya el evento esta programado
             
-            colapartidos.hacerFila(new NodoPartidos(ProPartidos));
+            //Si el numero de evento existe
+            if(ExisteIdEvento==true & ExisteEventoPorgramado==false){
+                //Junta la informacion para pasarla a la cola de partidos
+                //Pasamos el numero de evento para que nos de los nombes de los equipos
+                String Prueba =  "Hora "+Hora+":"+Minuto1+Minuto2+" "+HorarioApertura;
+                String Equipo1C=laListaEvento.Resultados1(IdEventoComprueba);
+                String Equipo2C=laListaEvento.Resultados2(IdEventoComprueba);
+                colapartidos.hacerFila(new NodoPartidos(IdEventoComprueba, Prueba, Equipo1C, Equipo2C));
+                
+                //Para agregar la informacion en el archivo txt
+
+                File Old_File = new File ("Calendario.txt");
+                Old_File.delete();
+                File New_File = new File ("Calendario.txt");
+                //String InfoParticipantes = laLista.toString();
+                String CalendarioPartidos = colapartidos.imprimirCola();
+
+                try {
+                    FileWriter OverWritten_File = new FileWriter(New_File, false);
+                    OverWritten_File.write(CalendarioPartidos);
+                    OverWritten_File.close();
+                }catch(IOException e){
+                    e.printStackTrace();
+                }
+
+                JOptionPane.showMessageDialog(null,"Se programo el evento");
+
+                ResultadoRelacion = laListaEvento.NombreDeEquipos();
+                
+                Txt_IdEvenPro.setText("");
+            }else{
+                JOptionPane.showMessageDialog(null,"No existe el numero de evento o ya esta programado");
+            }
             
-            JOptionPane.showMessageDialog(null,"Se programo el evento");
         }
         
     }//GEN-LAST:event_Btn_ProgramarActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void Btn_ResultadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_ResultadosActionPerformed
         // TODO add your handling code here:
-        /*
+        
         if(Txt_IdEvenResul.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Por favor llene la informacion");
-        }else{
-            String IdEventoR = Txt_IdEvenResul.toString();
-            int id = Integer.parseInt(IdEventoR);
-            String Equipo1 = laListaEvento.Resultados1(id);
-            String ResultadosE1 = Txt_ResulE1.getValue().toString();
-            String Equipo2 = laListaEvento.Resultados2(id);
-            String ResultadosE2 = Txt_ResulE2.getValue().toString();
-            //String Resultados = "Id Evento "+IdEventoR+" Equipo 1: "+Equipo1+" puntaje "+ResultadosE1+" Equipo 2: "+Equipo2+" puntaje "+ResultadosE2;
-            JOptionPane.showMessageDialog(null,"Se agrego el resultado");
         }
-        */
-        JOptionPane.showMessageDialog(null,"En desarrollo");
+        else{
+            int IdResultadoP = Integer.parseInt(Txt_IdEvenResul.getText());
+
+            boolean ExisteEventoPorgramado = colapartidos.EventoProgramado(IdResultadoP); //Nos guarda el resultado si ya el evento esta programado
+            boolean ExisteResultadosEevento;
+            
+            rutinasresultadosP.p1 = nuevaPila;
+            
+            //Nos encuentra si ya los resultados de ese evento fueron enviados
+            if(rutinasresultadosP.encuentra(IdResultadoP)) //Si nos encuentra que ya se registro los puntos de este evento
+            {
+                System.out.println("Encontrado");
+                ExisteResultadosEevento=true;
+            }
+            else
+            {
+                System.out.println("No Encontrado"); //Si no se encontro
+                ExisteResultadosEevento=false;
+            }
+
+            System.out.println(ExisteResultadosEevento);
+            
+            //Si el numero de evento existe y esta programado
+            if(ExisteEventoPorgramado==true & ExisteResultadosEevento==false){
+                String IdEventoPR = Txt_IdEvenResul.getText();
+                String ResultadosE1 = Txt_ResulE1.getValue().toString(); //Pasa a string el resultado E1
+                int ResultadosE1PR = Integer.parseInt(ResultadosE1); //Pasa a int el resultado E1
+                String ResultadosE2 = Txt_ResulE2.getValue().toString(); //Pasa a string el resultado E2
+                int ResultadosE2PR = Integer.parseInt(ResultadosE2); //Pasa a int el resultado E2
+                //Equipos
+                String Equipo1PR=laListaEvento.Resultados1(IdResultadoP);
+                String Equipo2PR=laListaEvento.Resultados2(IdResultadoP);
+
+                nuevaPila.apilar(IdResultadoP, Equipo1PR, ResultadosE1PR, Equipo2PR, ResultadosE2PR);
+
+                System.out.println(nuevaPila.imprimirPila());
+
+                String ResultadosPartidos = nuevaPila.imprimirPila();
+
+                //Para agregar la informacion en el archivo txt
+
+                File Old_File = new File ("Resultados.txt");
+                Old_File.delete();
+                File New_File = new File ("Resultados.txt");
+                try {
+                    FileWriter OverWritten_File = new FileWriter(New_File, false);
+                    OverWritten_File.write(ResultadosPartidos);
+                    OverWritten_File.close();
+                }catch(IOException e){
+                    e.printStackTrace();
+                }
+                
+                Prueba=nuevaPila.Victorias(); //Nos devuelve el arbol de las victorias manejado a traves de pilas
+                System.out.println(Prueba);
+
+                JOptionPane.showMessageDialog(null,"Se agregaron los resultados exitosamente");
+                
+                Txt_IdEvenResul.setText("");
+                
+
+            }else{
+                JOptionPane.showMessageDialog(null,"El evento no ha sido programado, no existe o ya se ha registrado el marcador");
+            }
+        }
+        
+    }//GEN-LAST:event_Btn_ResultadosActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        
+        //Para agregar la informacion en el archivo txt
+
+        File Old_File = new File ("RelacionEquipos.txt");
+        Old_File.delete();
+        File New_File = new File ("RelacionEquipos.txt");
+        try {
+            FileWriter OverWritten_File = new FileWriter(New_File, false);
+            OverWritten_File.write(ResultadoRelacion);
+            OverWritten_File.close();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        
+        JOptionPane.showMessageDialog(null,"\n Equipos: \n" + ResultadoRelacion);
+        
+        
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        File Old_File = new File ("Victorias.txt");
+        Old_File.delete();
+        File New_File = new File ("Victorias.txt");
+        try {
+            FileWriter OverWritten_File = new FileWriter(New_File, false);
+            OverWritten_File.write(Prueba);
+            OverWritten_File.close();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        
+        JOptionPane.showMessageDialog(null,"\n Victorias: \n" + Prueba);
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        EscondeBotones();
+        
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+        // TODO add your handling code here:
+        //Nos pregunta por la contraseña
+        String Contraseña=JOptionPane.showInputDialog("\n Escriba la contraseña para entrar al modo Administrador \n");
+        //Si la contraseña es correcta ingresa al modo administrador
+        if(Contraseña.equals("Admin")){
+            JOptionPane.showMessageDialog(null,"Bienvenido Administrador");
+            MostrarBotones();
+        }//Si la contraseña es incorrecta no nos entra al modo administrador
+        else{
+             JOptionPane.showMessageDialog(null,"Contraseña invalida, intente de nuevo");
+        }
+    }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     
     public void toStringParticipantes() {
@@ -1016,7 +1350,6 @@ public class RegistroParticipantes extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(RegistroParticipantes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -1036,6 +1369,7 @@ public class RegistroParticipantes extends javax.swing.JFrame {
     private javax.swing.JButton Btn_Programar;
     private javax.swing.JButton Btn_RegiEven;
     private javax.swing.JButton Btn_RegisParti;
+    private javax.swing.JButton Btn_Resultados;
     private javax.swing.JLabel Txt_DiaEven;
     private javax.swing.JTextField Txt_EdadParti;
     private javax.swing.JTextField Txt_EquiParti;
@@ -1057,11 +1391,11 @@ public class RegistroParticipantes extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmb_MAperturaS;
     private javax.swing.JComboBox<String> cmb_MesEvento;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1075,6 +1409,8 @@ public class RegistroParticipantes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1083,5 +1419,7 @@ public class RegistroParticipantes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JToggleButton jToggleButton2;
     // End of variables declaration//GEN-END:variables
 }

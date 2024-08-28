@@ -146,5 +146,38 @@ public class ListaEvento {
             }
         }
     }
+    
+    //PARA HACER EL GRAFO DE LA RELACION ENTRE EQUIPOS
+    
+    public String NombreDeEquipos(){
+        NodoEvento aux = cabeza;
+        String Equipo1="";
+        String Equipo2="";
+        String grafoRepresentacion = " ";
+        int contador = 2;
+        int ie = 0;
+        int je = 1;
+        
+        while(aux != null){
+            
+            GrafoRelacion grafo = new GrafoRelacion(contador); // El numero de equipos
+            
+            Equipo1 = aux.getDato().getNombreEquipo1(); //Toma el nombre del equipo1
+            grafo.agregarEquipo(Equipo1);
+            
+            Equipo2 = aux.getDato().getNombreEquipo2(); //Toma el nombre del equipo2
+            grafo.agregarEquipo(Equipo2);
+            
+            grafo.agregarPartido(ie, je);
+            
+            aux = aux.getSiguiente();
+            
+            grafoRepresentacion = grafoRepresentacion+grafo.mostrarGrafo();
+            
+            contador=contador+2;
+            
+        }
+        return grafoRepresentacion;            
+    }
            
 }
